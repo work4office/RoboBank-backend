@@ -1,7 +1,13 @@
 let express =   require("express");  
-let multer  =   require('multer');  
+let multer  =   require('multer');
+let fs = require('fs');
 let csv = require('csvtojson');
 let app =   express();
+
+let dir = './assets';
+if (!fs.existsSync(dir)){
+  fs.mkdirSync(dir);
+}
 
 let storage =   multer.diskStorage({  
   destination: function (req, file, callback) {  
