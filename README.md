@@ -1,22 +1,22 @@
 # RoboBank-backend
 # This is an assignment for read csv and validate data in csv, made using node.js
-Req: User can import any csv file(for specific structure) and it will validate 
+Req: User can import any csv file(structure of csv is attached here, records.csv) and it will validate the data.
+#There are two validations:
+1. all transaction references should be unique
+2. the end balance needs to be validated
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/rabobank-ui)
+and eventually it will display the failed records.
 
 UI workflow:
-1. User needs to select any csv file by clicking on "Import csv" button.
-2. This will read csv and will display those data in a table in UI.
-3. There will be search input field also at the right top.
-4. User can search anything from that field and table will be filtered accordingly.
+1. This is an local project, so user need to run node server using "node server.js" command in root folder.
+2. User need to run http://localhost:2000/ and import csv file.
+3. This will upload that csv file in server and will read that csv file.
+4. It will validate transaction reference with duplicate records. 
+5. Also validate end balance matching with start balance + mutation.
 
 Code workflow:
-Components relation: Parent(app.component) -> Child(home.component) -> Child(data.component)
-1. Import csv from home.component and reading using FileReader.
-2. Convert those string(read from FileReader) into Array of objects.
-3. Passing that array of objects to data.component and rendering in html table.
-4. Having a formControl binded in search field text box.
-5. On valueChange in search box it will give an observable which will either filter the table body
-   data or will return the entire table body data.
-6. This observable is used in table body with async pipe, so it will take care of subscribe and unsubscribing of that.
+npm package used: "csvtojson","express","multer",
+1. Import csv from index.html and uploading using multer package.
+2. Convert those string into json using csvtojson package.
+3. validating end balance and duplicate records and sending those to UI in Array of objects format.
 
